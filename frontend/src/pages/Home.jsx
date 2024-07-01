@@ -89,21 +89,22 @@ const Home = () => {
   };
 
   return (
-    <div>
-      
-      <h2 className="table-title">Post list</h2>
-
-      <input
-        className="saerch-input"
-        type="text"
-        name="search"
-        placeholder="Search here"
-        onChange={handleSearch}
-      />
+    <div className="main-home-div">
+      <div className="home-img">
+        <input
+          className="home-search home-search-block "
+          type="text"
+          name="search"
+          placeholder="Search here"
+          onChange={handleSearch}
+        />
+      </div>
 
       <div className="flexbox-container wrap">
         {loading 
-          ? "Loading..." 
+          ? "Loading..."
+          : posts.length === 0 
+          ? "No posts available" 
           : posts.map((post) => (
             <div 
               className="post-card" 
@@ -116,9 +117,9 @@ const Home = () => {
         ))}
       </div>
 
-      {pageCount.length && (
+      {pageCount.length > 0 && (
         <div className="pag-container">
-        <button className="pag-button" onClick={handlePrev} disabled={currentPage === 1}>prev</button>
+        <button className="pag-button" onClick={handlePrev} disabled={currentPage === 1}>❮</button>
         {pageCount.map((pageNumber, index) => (
           <button 
             className="pag-button" 
@@ -131,7 +132,7 @@ const Home = () => {
             {pageNumber}
           </button>
         ))}
-        <button className="pag-button" onClick={handleNext} disabled={currentPage === totalPage}>next</button>
+        <button className="pag-button" onClick={handleNext} disabled={currentPage === totalPage}>❯</button>
       </div>
       )}
       

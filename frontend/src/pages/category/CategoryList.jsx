@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "../../utils/axiosInstance";
 import moment from "moment";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const CategoryList = () => {
 
@@ -123,18 +125,29 @@ const CategoryList = () => {
   };
 
   return (
-    <div>
-      <button className="button button-block" onClick={() => navigate("new-category")}>Add New Category</button>
+    <div style={{backgroundColor: "rgb(243, 239, 236)", height:"155vh"}}>
+      <div className="topdiv">
+        <button
+          type="button"
+          className="add-category-button" 
+          onClick={() => navigate("new-category")}
+        >
+          <span className="button__text">Add New Category</span>
+        </button>
+      
+        <input
+          className="search-input search-input-block"
+          type="text"
+          name="search"
+          placeholder="Search here"
+          onChange={handleSearch}
+        />
+      </div>
+
       <h2 className="table-title">Category list</h2>
-      <input
-        className="saerch-input"
-        type="text"
-        name="search"
-        placeholder="Search here"
-        onChange={handleSearch}
-      />
 
       {loading ? "Loading..." : (
+        categories.length === 0 ? "No categories available" : (
         <table>
         <thead>
           <tr>
@@ -152,32 +165,34 @@ const CategoryList = () => {
             <td>{category.desc}</td>
             <td>{moment(category.createdAt).format("YYYY-MM-DD HH:mm:ss")}</td>
             <td>{moment(category.updatedAt).format("YYYY-MM-DD HH:mm:ss")}</td>
-            <th>
+            <td>
               <button 
-                className="button" 
+                style={{color:"blue"}}
+                className="action-button" 
                 onClick={() => navigate(`update-category/${category._id}`)}
               >
-                Update
+                <FontAwesomeIcon icon={faEdit} />
               </button>
               <button
-                className="button"
+                style={{color:"red"}}
+                className="action-button"
                 onClick={() => {
                   setShowModal(true);
                   setCategoryId(category._id);
                 }}
               >
-                Delete
+                <FontAwesomeIcon icon={faTrash} />
               </button>
-            </th>
+            </td>
           </tr>
           ))}
         </tbody>
       </table>
-      )}
+      ))}
 
-      {pageCount.length && (
+      {pageCount.length > 0 && (
         <div className="pag-container">
-        <button className="pag-button" onClick={handlePrev} disabled={currentPage === 1}>prev</button>
+        <button className="pag-button" onClick={handlePrev} disabled={currentPage === 1}>❮</button>
         {pageCount.map((pageNumber, index) => (
           <button 
             className="pag-button" 
@@ -190,7 +205,7 @@ const CategoryList = () => {
             {pageNumber}
           </button>
         ))}
-        <button className="pag-button" onClick={handleNext} disabled={currentPage === totalPage}>next</button>
+        <button className="pag-button" onClick={handleNext} disabled={currentPage === totalPage}>❯</button>
       </div>
       )}
 
@@ -200,12 +215,12 @@ const CategoryList = () => {
           setCategoryId(null);
         }}>
         <Modal.Header closeButton={true}>
-          <Modal.Title>Are you sure you want to delete?</Modal.Title>
+          <Modal.Title>Are you sure you want to delete category?</Modal.Title>
         </Modal.Header>
 
         <Modal.Footer>
           <div style={{ margin: "0 auto" }}>
-            <Button 
+            <button 
               className="no-button" 
               onClick={() => {
                 setShowModal(false);
@@ -213,9 +228,9 @@ const CategoryList = () => {
               }}
             >
               No
-            </Button>
+            </button>
 
-            <Button className="yes-button" onClick={handleDelete}>Yes</Button>
+            <button className="yes-button" onClick={handleDelete}>Yes</button>
           </div>
         </Modal.Footer>
       </Modal>

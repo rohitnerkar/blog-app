@@ -90,26 +90,32 @@ const PostList = () => {
   };
 
   return (
-    <div>
-      <button 
-        className="button button-block" 
-        onClick={() => navigate("new-post")}
-      >
-        Add New Post
-      </button>
-      <h2 className="table-title">Post list</h2>
+    <div style={{backgroundColor: "rgb(243, 239, 236)", height:"92vh"}}>
+      <div className="topdiv">
+        <button 
+          type="button"
+          className="add-post-button" 
+          onClick={() => navigate("new-post")}
+        >
+          <span class="button__text">Add New Post</span>
+        </button>
+      
+        <input
+          className="search-input search-input-block"
+          type="text"
+          name="search"
+          placeholder="Search here"
+          onChange={handleSearch}
+        />
+      </div>
 
-      <input
-        className="saerch-input"
-        type="text"
-        name="search"
-        placeholder="Search here"
-        onChange={handleSearch}
-      />
+      <h2 className="table-title">Post list</h2>
 
       <div className="flexbox-container wrap">
         {loading 
           ? "Loading..." 
+          : posts.length === 0 
+          ? "No posts available" 
           : posts.map((post) => (
             <div className="post-card" key={post._id} onClick={() => navigate(`detail-post/${post._id}`)}>
             <h4 className="card-title">{post.title}</h4>
@@ -118,9 +124,11 @@ const PostList = () => {
         ))}
       </div>
 
-      {pageCount.length && (
+      {pageCount.length > 0 && (
         <div className="pag-container">
-        <button className="pag-button" onClick={handlePrev} disabled={currentPage === 1}>prev</button>
+
+        <button className="pag-button" onClick={handlePrev} disabled={currentPage === 1}>❮</button>
+
         {pageCount.map((pageNumber, index) => (
           <button 
             className="pag-button" 
@@ -133,7 +141,9 @@ const PostList = () => {
             {pageNumber}
           </button>
         ))}
-        <button className="pag-button" onClick={handleNext} disabled={currentPage === totalPage}>next</button>
+        
+        <button className="pag-button" onClick={handleNext} disabled={currentPage === totalPage}>❯</button>
+        
       </div>
       )}
       

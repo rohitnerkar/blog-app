@@ -107,6 +107,7 @@ const ForgotPassword = () => {
   };
 
   return (
+    <div className="bg-img">
     <div className="form-container">
       <form className="inner-container" onSubmit={!hasEmail ? handleSendCode : handleRecoverPassword}>
         <h2 className="form-title">{`${!hasEmail ? "Recover Password" : "New Password"}`}</h2>
@@ -156,12 +157,12 @@ const ForgotPassword = () => {
 
         <div className="form-group">
           <input 
-            className="button" 
             type="submit" 
             value={`${loading ? "Sending..." : "Send"}`} 
           />
         </div>
       </form>
+    </div>
     </div>
   );
 };

@@ -85,6 +85,7 @@ const Signup = () => {
   };
 
   return (
+    <div className="bg-img">
     <div className="form-container">
       <form className="inner-container" onSubmit={handleSubmit}>
         <h2 className="form-title">Signup Form</h2>
@@ -150,6 +151,7 @@ const Signup = () => {
           />
         </div>
       </form>
+    </div>
     </div>
   );
 };

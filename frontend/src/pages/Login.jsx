@@ -70,6 +70,7 @@ const Login = () => {
   };
 
   return (
+    <div className="bg-img">
     <div className="form-container">
       <form className="inner-container" onSubmit={handleSubmit}>
         <h2 className="form-title">Login Form</h2>
@@ -101,13 +102,14 @@ const Login = () => {
         </div>
 
         <Link className="forgot-password" to="/forgot-password">
-          Forgot Password
+          Forgot Password?
         </Link>
 
         <div className="form-group">
-          <input className="button" type="submit" value={`${loading ? "Loging..." : "Login"}`} />
+          <input type="submit" value={`${loading ? "Loging..." : "Login"}`} />
         </div>
       </form>
+    </div>
     </div>
   );
 };

@@ -92,7 +92,7 @@ const getCategories = async(req, res, next) => {
 
         const categories = await Category.find(query).skip((pageNumber - 1) * sizeNumber).limit(sizeNumber).sort({ updatedBy: -1 });
 
-        res.status(200).json({code: 200, status: true, message: "Get category lis successfully", data: { categories, total, pages }});
+        res.status(200).json({code: 200, status: true, message: "Get category list successfully", data: { categories, total, pages }});
     } catch (error) {
         next(error);
     }

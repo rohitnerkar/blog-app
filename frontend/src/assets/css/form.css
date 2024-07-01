@@ -1,64 +1,156 @@
-.form-container {
-  display: flex;
-  width: 40%;
-  height: 60%;
-  margin: 0 auto;
-  margin-top: 150px;
-  background-color: #eee;
-  justify-content: center;
-  border-radius: 10px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.inner-container {
-  display: block;
-  align-items: center;
-  width: 70%;
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f9;
+  height: 100%;
+}
+
+.bg-img{
+  background: url('../images/andrew-neel-cckf4TsHAuw-unsplash.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+.bg-img:after{
+  position: absolute;
+  content: '';
+  top: auto;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+}
+
+.main-container {
+  display: flex;
+  background-color: #bfc1c5;
+  height: 92vh;
+}
+
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  text-align: center;
+  padding: 60px 32px;
+  width: 370px;
+  transform: translate(-50%,-50%);
+  background: rgba(255,255,255,0.15);
+  box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
 }
 
 .form-title {
-  font-size: 30px;
-  text-align: center;
-  margin-top: 20px;
+  color: white;
+  font-size: 33px;
+  font-weight: 600;
+  margin: 0 0 35px 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.inner-title {
+  color: #535457;
+  font-size: 33px;
+  font-weight: 600;
+  margin: 0 0 35px 0;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  flex-direction: column;
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+  height: 45px;
   width: 100%;
+  display: flex;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 18px;
+  font-size: 0.9rem;
+  color: white;
+  margin-bottom: 4px;
+  font-family: 'Poppins',sans-serif;
 }
 
-.form-control {
-  display: block;
+.form-group .inner-label {
+  font-size: 1.2rem;
+  color: #535457;
+  margin-bottom: 4px;
+  font-family: 'Poppins',sans-serif;
+}
+
+.form-group input {
   width: 100%;
-  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.94);
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  padding: 8px;
+  border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+.form-group input[type="file"] {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.94);
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  padding: 8px 8px 30px 8px;
   border-radius: 5px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="select"],
-input[type="textarea"] {
-  font-size: 14px;
-}
-
-.button {
-  border: 1px solid #999;
-  padding: 7px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #ccc;
+  border: 1px solid #ccc;
 }
 
 .error {
   color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.forgot-password {
+  display: block;
+  text-align: left;
+  font-size: 0.9rem;
+  margin-top: 40px;
+  color: white;
+  text-decoration: none;
+  font-family: 'Poppins',sans-serif;
+}
+
+.forgot-password:hover{
+  text-decoration: underline;
+}
+
+.form-group input[type="submit"] {
+  margin-top: 20px;
+  background: #3498db;
+  border: 1px solid #2691d9;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Montserrat',sans-serif;
+}
+
+.form-group input[type="submit"]:hover {
+  background: #2691d9;
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    width: 90%;
+    max-width: 320px;
+  }
 }

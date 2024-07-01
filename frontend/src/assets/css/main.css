@@ -1,85 +1,439 @@
-.primary-link {
-  background-color: aliceblue;
-  padding: 16px 32px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-nav a {
-  margin-right: 16px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;  
 }
 
-nav a.active {
+.main-home-div {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0eded;
+    box-sizing: border-box;  
+}
+
+.home-img {
+  background: url('../images/blog_home_image.jpg');
+  height: 45vh;
+  width: 100%;
+  background-size: cover;
+  background-position: top; 
+}
+
+nav.primary-link {
+  width: 100%;
+  padding: 6px 0;
+  background-color: #ecf0f3;
+  box-shadow: -3px -3px 7px #ffffff, 
+               3px 3px 5px #ceced1, 
+               inset -3px -3px 7px #ffffff, 
+               inset 3px 3px 5px #ceced1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav.primary-link a {
   text-decoration: none;
-  font-weight: bold;
+  color: #31344b;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 10px 20px;
+  margin: 0 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav.primary-link a:hover {
+  color: #3498db;
+}
+
+nav.primary-link a:hover:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset -3px -3px 7px #ffffff, 
+               inset 3px 3px 5px #ceced1;
+}
+
+nav.primary-link a.active {
+  font-weight: 600;
+  color: #3498db;
+}
+
+nav.primary-link .right {
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  nav.primary-link {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav.primary-link a {
+    margin: 5px 0;
+    padding: 8px 20px 8px 25px;
+    width: 100%;
+    text-align: center;
+    background-color: #ecf0f3;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .hamburger-icon {
+    display: block;
+    text-align: right;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    background-color: #e8e6e6;
+    box-shadow: 0 0 10px rgba(236, 234, 234, 0.1);
+    z-index: 1000;
+    padding: 20px;
+
+  }
+
+  .menu.active {
+    display: block;
+  }
+
+  .menu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #31344b;
+    transition: background-color 0.3s ease;
+  }
+
+  .menu a:hover {
+    background-color: #ecf0f3;
+  }
+}
+
+@media (min-width: 769px) {
+  nav.primary-link {
+    justify-content: flex-start;
+  }
+
+  nav.primary-link a {
+    margin: 0 8px;
+    padding: 10px 20px;
+  }
+
+  .hamburger-icon {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .menu a {
+    margin: 0 8px;
+    padding: 10px 20px;
+    border-bottom: none;
+  }
+}
+
+.table-title {
+  text-align: center;
+  margin: 20px 0;
+  color: #343a40;
+  font-size: 40px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 table {
   font-family: arial, sans-serif;
+  width: 80%;
+  margin: 0 auto;
   border-collapse: collapse;
-  width: 100%;
+  box-shadow: 0 2px 10px rgba(121, 114, 114, 0.1);
 }
 
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
+td, th {
   padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+tr {
+  text-align: center;
+}
+
+th {
+  background-color: #343a40;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
 }
 
 tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+h2 {
+  color: #333;
+}
+
+.topdiv{
+  display: flex;
+  padding: 5px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
+}
+
+.add-post-button {
+  position: relative;
+  width: 120px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #34974d;
+  background-color: #3aa856;
+  margin: 10px;
+}
+
+.add-post-button .button__text {
+  transition: all 0.3s;
+  transform: translateX(8px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.add-post-button:hover {
+  background: #34974d;
+}
+
+.add-post-button:active {
+  border: 1px solid #2e8644;
+}
+
+.add-category-button {
+  position: relative;
+  width: 160px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #34974d;
+  background-color: #3aa856;
+  margin: 10px;
+}
+
+.add-category-button .button__text {
+  transform: translateX(10px);
+  transition: all 0.3s;
+  color: #fff;
+  font-weight: 600;
+}
+
+.add-category-button:hover {
+  background: #34974d;
+}
+
+.add-category-button:active {
+  border: 1px solid #2e8644;
+}
+
+.back-button {
+  
+  height: 2.5em;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee4b;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: #fff;
+  padding: 0 10px 0 10px;
+ }
+ 
+ .back-button > svg {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  transition: all 0.4s ease-in;
+ }
+ 
+ .back-button:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+ }
+ 
+ .back-button:hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+ }
+
+.button:hover {
+  background-color: #0056b3;
+}
+
 .button-block {
   display: block;
-  margin: 25px 0px;
+  width: auto;
+  margin: 10px;
 }
 
-.table-title {
-  text-align: center;
-  margin-bottom: 25px;
+.detailpost-button {
+  display: flex;
+  margin: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  justify-content: center;
+  width: 100px;
 }
 
-.saerch-input {
-  padding: 5px;
-  display: block;
-  border: 1px solid #bbb;
+.detailpost-button :hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+}
+
+.action-button {
+  display: flex;
+  margin: 10px;
+  border: none;
+  background-color: transparent;
   border-radius: 5px;
-  width: 300px;
-  margin-bottom: 20px;
+  font-size: 20px; 
+  justify-content: space-between;
+}
+
+.search-input {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 400px;
+  box-sizing: border-box;
+}
+
+.search-input-block {
+  display: block;
+  margin: 10px 10px 10px auto;
+}
+
+.home-search {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 400px;
+  box-sizing: border-box;
+}
+
+.home-search-block {
+  display: block;
+  margin: 10px 10px 10px auto;
 }
 
 .no-button {
-  background-color: #ddd !important;
-  color: #111 !important;
-  border: none !important;
-  margin-right: 20px;
+  background-color: white;
+  color: #dc3545;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .no-button:hover {
-  background-color: #ccc !important;
+  background-color: #dc3545;
+  color: white;
 }
 
 .yes-button {
-  background-color: red !important;
-  border: none !important;
+  background-color: white;
+  color: #28a745;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .yes-button:hover {
-  background-color: crimson !important;
+  background-color: #28a745;
+  color: white;
 }
 
 .pag-container {
-  margin: 15px;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  padding-bottom: 15px;
 }
 
 .pag-button {
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  margin-right: 15px;
+  background-color: #017EDD;;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .pag-button:hover {
-  background-color: #ccc;
+  /* background-color: #ccc; */
+  background-color: #1a5ea6;
+}
+
+.pag-button[disabled] {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .post-card {
+    max-width: 100%;
+  }
 }
 
 .forgot-password {
