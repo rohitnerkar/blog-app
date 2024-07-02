@@ -111,7 +111,7 @@ const getPosts = async(req, res, next) => {
             query = {...query, category};
         }
 
-        console.log(query);
+        // console.log(query);
 
         const total = await Post.countDocuments(query);
         const pages = Math.ceil(total / sizeNumber);

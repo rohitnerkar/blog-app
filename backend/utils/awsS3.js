@@ -28,7 +28,7 @@ const uploadFileToS3 = async({ file, ext }) => {
         await client.send(command);
         return Key;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 };
 
@@ -44,7 +44,7 @@ const signedUrl = async(Key) => {
         const url = await getSignedUrl(client, command, { expiresIn: 60 });
         return url;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 };
 
@@ -60,7 +60,7 @@ const deleteFileFromS3 = async(Key) => {
         await client.send(command);
         return;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 };
 

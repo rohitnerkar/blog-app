@@ -26,7 +26,7 @@ const DetailPost = () => {
 
           setPost(data.post);
 
-          console.log(data)
+          // console.log(data)
         } catch (error) {
           const response = error.response;
           const data = response.data;

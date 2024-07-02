@@ -56,15 +56,15 @@ const Login = () => {
         navigate("/");
       } catch (error) {
         setLoading(false);
-
         setFormError(initialFormError);
+
         const response = error.response;
         const data = response.data;
         
         toast.error(data.message, {
           position: "top-right",
           autoClose: true,
-        });
+          });
       }
     }
   };
@@ -78,6 +78,7 @@ const Login = () => {
         <div className="form-group">
           <label>Email</label>
           <input
+            id="email"
             className="form-control"
             type="text"
             name="email"
@@ -91,6 +92,7 @@ const Login = () => {
         <div className="form-group">
           <label>Password</label>
           <input
+            id="password"
             className="form-control"
             type="password"
             name="password"

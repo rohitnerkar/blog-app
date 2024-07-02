@@ -8,24 +8,23 @@ const isAuth = async(req, res, next) => {
 
         if(token){
             const payload = jwt.verify(token, jwtSecret);
-            if(payload){
-                req.user = {
-                    _id: payload._id,
-                    name: payload.name,
-                    email: payload.email,
-                    role: payload.role
-                }
-                next();
-            }else{
-                res.code = 401;
-                throw new Error("Unauthorized");
+
+            if (Date.now() >= payload.exp * 1000) {
+                res.status(401).json({ message: "Token expired" });
             }
-        }else{
-            res.code = 400;
-            throw new Error("Token is required");
+
+            req.user = {
+                _id: payload._id,
+                name: payload.name,
+                email: payload.email,
+                role: payload.role
+            };
+            next();
+        } else {
+            return res.status(400).json({ message: "Token is required" });
         }
     } catch (error) {
-        next(error);
+        return res.status(401).json({ message: "Session expired. Please log in again.", error: error.message });
     }
 };
 

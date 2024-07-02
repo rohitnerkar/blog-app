@@ -20,6 +20,18 @@ export const AuthProvider = ({children}) => {
         }else{
             setAuth(null);
         }
+
+        const handleTokenExpired = () => {
+            window.localStorage.removeItem("blogData");
+            setAuth(null);
+            navigate('/login');
+        };
+
+        window.addEventListener('tokenExpired', handleTokenExpired);
+
+        return () => {
+            window.removeEventListener('tokenExpired', handleTokenExpired);
+        };
     }, [navigate, location]);
 
     return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;

@@ -15,4 +15,15 @@ axiosInstance.interceptors.request.use((req) => {
   return req;
 });
 
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      const event = new CustomEvent('tokenExpired');
+      window.dispatchEvent(event);
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default axiosInstance;
