@@ -13,7 +13,7 @@ const app = express();
 
 connectMongodb();
 
-app.use(cors({origin: ["https://blog-app-frontend-0w3d.onrender.com"] }));
+app.use(cors());
 app.use(express.json({ limit: "500mb" }));
 app.use(bodyparser.urlencoded({ limit: "500mb", extended: true}));
 app.use(morgan("dev"));
