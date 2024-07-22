@@ -17,7 +17,7 @@ connectMongodb();
 app.use(cors({origin: ["https://blog-app-frontend-q445.onrender.com"] }));
 
 // app.use(express.json({ limit: "500mb" }));
-app.use(express.static(this.path.join(__dirname, 'dist'), {
+app.use(express.static(path.join(__dirname, 'dist'), {
     setHeaders: (res, filePath) => {
       if (path.extname(filePath) === '.js') {
         res.setHeader('Content-Type', 'application/javascript');
