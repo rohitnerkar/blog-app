@@ -1,10 +1,8 @@
 services:
-  - type: staticweb
-    name: my-app
+  - type: web
+    name: my-frontend
     env: static
     staticPublishPath: dist
-    headers:
-      - for: "/*.js"
-        headers:
-          - key: "Content-Type"
-            value: "application/javascript"
+    envVars:
+      - key: NODE_ENV
+        value: production

@@ -8,13 +8,23 @@ const connectMongodb = require("./init/mongodb");
 const { authRoute, categoryRoute, fileRoute, postRoute } = require("./routes");
 const errorHandler = require("./middlewares/errorHandler");
 const notfound = require("./controller/notfound");
+const path = require('path');
 
 const app = express();
 
 connectMongodb();
 
 app.use(cors({origin: ["https://blog-app-frontend-q445.onrender.com"] }));
-app.use(express.json({ limit: "500mb" }));
+
+// app.use(express.json({ limit: "500mb" }));
+app.use(express.static(this.path.join(__dirname, 'dist'), {
+    setHeaders: (res, filePath) => {
+      if (path.extname(filePath) === '.js') {
+        res.setHeader('Content-Type', 'application/javascript');
+      }
+    }
+  }));
+
 app.use(bodyparser.urlencoded({ limit: "500mb", extended: true}));
 app.use(morgan("dev"));
 
