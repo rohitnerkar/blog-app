@@ -33,7 +33,10 @@ app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/file", fileRoute);
 app.use("/api/v1/posts", postRoute);
 
-app.use("*", notfound);
+// app.use("*", notfound);
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+  });
 
 app.use(errorHandler);
 
