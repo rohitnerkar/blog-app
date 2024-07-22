@@ -2,7 +2,9 @@ import axios from "axios";
 
 // const apiUrl = import.meta.env.VITE_API_URL;
 
-const axiosInstance = axios.create({ baseURL: "https://blog-app-backend-k54u.onrender.com/api/v1" });
+const url = "https://blog-app-backend-k54u.onrender.com";
+
+const axiosInstance = axios.create({ baseURL: url + "/api/v1" });
 
 axiosInstance.interceptors.request.use((req) => {
   const stringifyBlogData = window.localStorage.getItem("blogData");
