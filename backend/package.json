@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "build": "cd client && npm install && npm run build && cd ..",
+    "build": "npm install && npm run build && cd ..",
     "test": "echo 'testing...'"
   },
   "author": "",
