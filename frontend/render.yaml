@@ -1,3 +1,15 @@
+# services:
+#   - type: web
+#     name: my-frontend
+#     env: static
+#     staticPublishPath: dist
+#     buildCommand: "npm install && npm run build"
+#     headers:
+#       - for: "*.js"
+#         values:
+#           Content-Type: application/javascript
+
+
 services:
   - type: web
     name: my-frontend
