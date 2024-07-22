@@ -1,0 +1,10 @@
+services:
+  - type: staticweb
+    name: my-app
+    env: static
+    staticPublishPath: dist
+    headers:
+      - for: "/*.js"
+        headers:
+          - key: "Content-Type"
+            value: "application/javascript"
