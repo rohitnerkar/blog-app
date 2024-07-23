@@ -4,9 +4,11 @@ import axios from "axios";
 
 // const url = "https://blog-app-backend-k54u.onrender.com";
 
-// console.log("API URL:", apiUrl); 
+// console.log("API URL:", apiUrl);
 
-const axiosInstance = axios.create({ baseURL: "http://localhost:8000/api/v1" });
+// const axiosInstance = axios.create({ baseURL: "http://localhost:8000/api/v1" });
+
+const axiosInstance = axios.create({ baseURL: "https://blog-app-backend-bjlv.onrender.com/api/v1" });
 
 axiosInstance.interceptors.request.use((req) => {
   const stringifyBlogData = window.localStorage.getItem("blogData");
